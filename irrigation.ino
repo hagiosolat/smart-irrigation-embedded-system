@@ -11,17 +11,18 @@
 //Provide the RTDB payload printing info and the other helper function
 #include "addons/RTDBHelper.h"
 
-#define WIFI_SSID "olaty"
-#define WIFI_PASSWORD "1234567890"
+#define WIFI_SSID "Faloyin4"
+#define WIFI_PASSWORD "Faloyin4"
 
 //Insert Firebase project API Key
 #define API_KEY "AIzaSyA4oFOC1ZvCvrsT76xVOAwDuAj3DIBDsrU"
 
 
 //Define the ID token for client or device to send the messsage
-#define DEVICE_REGISTRATION_ID_TOKEN "cqmeFHIlRvuh9XDG4_rCGk:APA91bGPCv71Sacs1T44aCW0-P0K2PB402A87bK4hqCOlGbqaitLPh6gtM400qGifyK8vR_uaHl-NRZYSQGzISj20fsBjLhcd6DM-t8S1he96e7rQHkUbVrpJcfKhLUsg05yuZjoi-7n"
+//#define DEVICE_REGISTRATION_ID_TOKEN "cqmeFHIlRvuh9XDG4_rCGk:APA91bGPCv71Sacs1T44aCW0-P0K2PB402A87bK4hqCOlGbqaitLPh6gtM400qGifyK8vR_uaHl-NRZYSQGzISj20fsBjLhcd6DM-t8S1he96e7rQHkUbVrpJcfKhLUsg05yuZjoi-7n"
 
-#define FIREBASE_FCM_SERVER_KEY "AAAAQxKgcAw:APA91bGOXKlRrV6hjrkJsTMxWwrBnRYDIahpk2sRCoD_HrZVKR-F6Dooffnj3ScEPptWwho-iEmsT9d3AHEPOmn0_a62CEqh_6yAYvphjS_fgvuQDe3JRzJrdvDa2PejS2CXeWHgz23T"
+#define FIREBASE_FCM_SERVER_KEY "server Key"
+
  
 
 //Insert Authorized Email and Corresponding Password
@@ -30,7 +31,8 @@
 
 
 // Insert RTDB URLefine the RTDB URL
-#define DATABASE_URL "https://irrigation-491a5-default-rtdb.europe-west1.firebasedatabase.app/"
+#define DATABASE_URL "url_to the serverKey"
+
 
 #define DHTPIN 4
 
@@ -196,7 +198,7 @@ void loop() {
      if((int)analogRead(soil_sensor) > THRESHOLD) {
        if(Firebase.RTDB.getString(&fbdo,"token")){
           Serial.println(fbdo.to<String>());
-      //   sendMessage(fbdo.to<String>());
+         sendMessage(fbdo.to<String>());
        }
        parentPath = databasePath;
      tojson.set(buttonPath.c_str(), "ON");
@@ -211,7 +213,7 @@ void loop() {
            if(Firebase.RTDB.getString(&fbdo,"token")){
              Serial.println("The Token is....");
              Serial.println(fbdo.to<String>());
-       sendMessage(fbdo.to<String>());
+       //sendMessage(fbdo.to<String>());
       }
          parentPath = databasePath;
      tojson.set(buttonPath.c_str(), "OFF");
